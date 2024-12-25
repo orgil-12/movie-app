@@ -1,16 +1,10 @@
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Film} from "lucide-react";
-import {Search} from "@/components/ui/Search"
-import { Moon } from "@/components/ui/Moon";
+import {Search} from "@/app/_components/Search"
+import { Moon } from "@/app/_components/Moon";
+import { MoonType} from "@/app/layout";      
 
-type Props = {
-    setTheme : void,
-    theme: string,
-  }
 
-export const Navigation = ({ setTheme }: { setTheme: (theme: string) => void }) => {
+export const Navigation = ({toggleTheme,theme}:{toggleTheme: ()=> void; theme: MoonType;}) => {
     return (
         <div className="w-[100%] flex justify-between px-5 py-[11.5px]">
             <div className="w-[100%] flex items-center justify-between">
@@ -19,8 +13,8 @@ export const Navigation = ({ setTheme }: { setTheme: (theme: string) => void }) 
                     <span>Movie Z</span>
                 </h1>
                 <div className="flex gap-3 ">
-                    <button className="border rounded-[10px] p-2"><Search /></button>
-                    <button className="border rounded-[10px] p-2" onClick={() => { setTheme("dark") }}><Moon /></button>
+                    <button className="border rounded-[10px] p-2"><Search theme={theme} /></button>
+                    <button className="border rounded-[10px] p-2" onClick={toggleTheme}><Moon theme={theme} /></button>
                 </div>
             </div>
         </div>
