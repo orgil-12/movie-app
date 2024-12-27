@@ -3,15 +3,11 @@ import { options } from "@/app/constants/api";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Credits, Movie } from "@/app/constants/types";
-import { Star } from "lucide-react";
+import { ArrowRight, Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useParams } from "next/navigation";
-
-type Props = {
-  params: {
-    id: string;
-  };
-};
+import Link from "next/link";
+import MoreLikeThis from "@/app/_components/MoreLikeThis";
 
 export default function Page() {
   const params = useParams();
@@ -31,7 +27,7 @@ export default function Page() {
       setMovieDetails(resJson);
     }
     fetchMovie();
-  }, []);
+  }, [params?.id]); 
   useEffect(() => {
     async function fetchCredits() {
       const response = await fetch(
@@ -42,7 +38,8 @@ export default function Page() {
       setMovieCredits(resJson);
     }
     fetchCredits();
-  }, []);
+  }, [params?.id]);
+  
   return (
     <div className="pt-8 flex flex-col gap-8">
       <div className="flex flex-col gap-8">
@@ -58,7 +55,7 @@ export default function Page() {
               <Star color="#FDE047" fill="#FDE047" width="20px" height="20px" />
               <p className="flex flex-col text-sm">
                 <span className="after:content-['/10'] after:text-muted-foreground ">
-                  {movieDetails?.vote_average.toFixed(1)}
+                  {movieDetails?.vote_average}
                 </span>
                 <span className="text-muted-foreground">
                   {movieDetails?.vote_count}
@@ -100,10 +97,10 @@ export default function Page() {
                 {movieCredits?.crew
                   .filter((crew) => crew.department === "Directing")
                   .map((crew, index, array) => (
-                    <>
-                      <p key={crew.id}>{crew.name}</p>
+                    <span key={`directing` + crew.id} className="flex gap-1">
+                      <p>{crew.name}</p>
                       {index !== array.length - 1 ? <span>·</span> : null}
-                    </>
+                    </span>
                   ))}
               </div>
             </div>
@@ -113,10 +110,13 @@ export default function Page() {
                 {movieCredits?.crew
                   .filter((crew) => crew.department === "Writing")
                   .map((crew, index, array) => (
-                    <>
-                      <p key={crew.id}>{crew.name}</p>
+                    <span
+                      key={`writing` + index}
+                      className="flex flex-wrap gap-1"
+                    >
+                      <p>{crew.name}</p>
                       {index !== array.length - 1 ? <span>·</span> : null}
-                    </>
+                    </span>
                   ))}
               </div>
             </div>
@@ -124,16 +124,20 @@ export default function Page() {
               <h4 className="font-semibold">Stars</h4>
               <div className="flex flex-wrap gap-1">
                 {movieCredits?.cast.slice(0, 4).map((cast, index, array) => (
-                  <>
-                    <p key={cast.id}>{cast.name}</p>
+                  <span
+                    key={`stars` + cast.id}
+                    className="flex flex-wrap gap-1"
+                  >
+                    <p>{cast.name}</p>
                     {index !== array.length - 1 ? <span>·</span> : null}
-                  </>
+                  </span>
                 ))}
               </div>
             </div>
           </div>
         </div>
       </div>
+      <MoreLikeThis movieDetails={movieDetails} />
     </div>
   );
 }

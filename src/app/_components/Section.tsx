@@ -2,7 +2,7 @@ import { ArrowRight } from "lucide-react";
 import { options } from "../constants/api";
 import { Movie } from "../constants/types";
 import MovieCard from "./MovieCard";
-import Link from "next/link"; 
+import Link from "next/link";
 
 type Props = {
   title: string;
@@ -20,13 +20,20 @@ export default async function Section({ title, endpoint }: Props) {
     <div className="p-5 flex flex-col gap-5">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold ">{title}</h1>
-        <Link href={endpoint} className="flex gap-2 px-4 py-2 text-xs items-center hover:underline">See more <ArrowRight width="9.33px"/></Link>
+        <Link
+          href={endpoint}
+          className="flex gap-2 px-4 py-2 text-xs items-center hover:underline"
+        >
+          See more <ArrowRight width="9.33px" />
+        </Link>
       </div>
       <div className="gap-5 grid grid-cols-2">
         {movies.map((movie) => (
-          <MovieCard movie={movie} />
+          <div key={movie.id}>
+            <MovieCard movie={movie}  />
+          </div>
         ))}
       </div>
     </div>
   );
-}  
+}

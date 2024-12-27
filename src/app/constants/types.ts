@@ -25,4 +25,5 @@ export type Movie  = {
         department: string
         name: string
       } []
+      poster_path: string
   }

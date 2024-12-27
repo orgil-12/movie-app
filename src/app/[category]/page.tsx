@@ -28,13 +28,15 @@ export default function Page() {
       setMovies(resJson.results);
     }
     fetchMovies();
-  }, []);
+  }, [params.category]);  
   return (
     <div className="p-5 flex flex-col gap-5">
       <h1 className="text-2xl font-bold capitalize ">{params.category}</h1>
       <div className="gap-5 grid grid-cols-2">
         {movies?.map((movie) => (
-          <MovieCard movie={movie} />
+          <span key={movie.id}>
+            <MovieCard movie={movie} />
+          </span>
         ))}
       </div>
       <Pagination>
