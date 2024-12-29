@@ -6,7 +6,6 @@ import { Credits, Movie } from "@/app/constants/types";
 import { ArrowRight, Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useParams } from "next/navigation";
-import Link from "next/link";
 import MoreLikeThis from "@/app/_components/MoreLikeThis";
 
 export default function Page() {
@@ -27,7 +26,7 @@ export default function Page() {
       setMovieDetails(resJson);
     }
     fetchMovie();
-  }, [params?.id]); 
+  }, [params?.id]);
   useEffect(() => {
     async function fetchCredits() {
       const response = await fetch(
@@ -39,10 +38,10 @@ export default function Page() {
     }
     fetchCredits();
   }, [params?.id]);
-  
+
   return (
     <div className="pt-8 flex flex-col gap-8">
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-8 ">
         <div className="flex flex-col gap-4">
           <div className="px-5 flex gap-10">
             <div>

@@ -17,7 +17,7 @@ export default async function Section({ title, endpoint }: Props) {
   const resJson = await res.json();
   const movies: Movie[] = resJson.results.slice(0, 10);
   return (
-    <div className="p-5 flex flex-col gap-5">
+    <div className="p-5 flex flex-col gap-5 sm:px-[40px] md:px-[60px] lg:px-[80px]">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold ">{title}</h1>
         <Link
@@ -27,10 +27,10 @@ export default async function Section({ title, endpoint }: Props) {
           See more <ArrowRight width="9.33px" />
         </Link>
       </div>
-      <div className="gap-5 grid grid-cols-2">
+      <div className="gap-5 grid grid-cols-2  sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-6">
         {movies.map((movie) => (
           <div key={movie.id}>
-            <MovieCard movie={movie}  />
+            <MovieCard movie={movie} />
           </div>
         ))}
       </div>
