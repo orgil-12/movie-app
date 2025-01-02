@@ -31,7 +31,7 @@ export default function MoreLikeThis({
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-semibold ">More like this</h1>
         <Link
-          href={`/recommendations/${movieDetails?.id}`}
+          href={`/recommendations/${movieDetails?.id}?page=1`}
           className="flex gap-2 px-4 py-2 text-xs items-center hover:underline"
         >
           See more <ArrowRight width="9.33px" />
@@ -40,7 +40,7 @@ export default function MoreLikeThis({
       <div>
         <div className="flex overflow-hidden gap-5">
           {recData?.slice(0, 2).map((movie) => (
-            <Link href={`/movie/${movie.id}`} key={movie.id}>
+            <Link href={`/movie/${movie.id}`} key={"recData"+movie.id}>
               <div className={`bg-bgColor rounded-lg`}>
                 <img
                   src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}

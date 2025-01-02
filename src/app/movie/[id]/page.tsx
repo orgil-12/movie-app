@@ -12,7 +12,7 @@ export default function Page() {
   const params = useParams();
   const [movieDetails, setMovieDetails] = useState<Movie>();
   const [movieCredits, setMovieCredits] = useState<Credits>();
-  const isAdult = movieDetails?.adult ? "SG" : "PG";
+  const isAdult = movieDetails?.adult ? "R" : "PG";
   const movieTime = movieDetails?.runtime ?? 0;
   const hours = Math.floor(movieTime / 60);
   const min = movieTime % 60;

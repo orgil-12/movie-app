@@ -27,7 +27,7 @@ export default async function Section({ title, endpoint }: Props) {
           See more <ArrowRight width="9.33px" />
         </Link>
       </div>
-      <div className="gap-5 grid grid-cols-2  sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-6">
+      <div className="gap-5 grid grid-cols-2  sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-5">
         {movies.map((movie) => (
           <div key={movie.id}>
             <MovieCard movie={movie} />

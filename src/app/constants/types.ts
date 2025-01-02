@@ -27,3 +27,8 @@ export type Movie  = {
       } []
       poster_path: string
   }
+
+export type PageInfo = {
+    totalPage: number,
+    currentPage: number
+  }
