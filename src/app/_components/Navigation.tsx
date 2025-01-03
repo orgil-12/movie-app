@@ -3,6 +3,14 @@ import { Search } from "@/app/_components/Search";
 import { Moon } from "@/app/_components/Moon";
 import { MoonType } from "@/app/layout";
 import Link from "next/link";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Button } from "@/components/ui/button";
+import { FilterGenre } from "./FilterGenre";
+import { useSearchParams } from "next/navigation";
 
 export const Navigation = ({
   toggleTheme,
@@ -11,6 +19,8 @@ export const Navigation = ({
   toggleTheme: () => void;
   theme: MoonType;
 }) => {
+  const searchParams = useSearchParams();
+  const genreName = searchParams.get("genre_name");
   return (
     <div className="w-[100%] flex justify-between px-5 py-[11.5px]">
       <div className="w-[100%] flex items-center justify-between">
@@ -20,6 +30,8 @@ export const Navigation = ({
             <span>Movie Z</span>
           </h1>
         </Link>
+        {!genreName && (<FilterGenre/>)}
+        
         <div className="flex gap-3 ">
           <button className="border rounded-[10px] p-2">
             <Search theme={theme} />

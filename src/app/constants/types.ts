@@ -32,3 +32,8 @@ export type PageInfo = {
     totalPage: number,
     currentPage: number
   }
+
+export type Genre = {
+    id: number,
+    name: string
+  }
