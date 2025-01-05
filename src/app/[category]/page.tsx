@@ -3,13 +3,10 @@ import { Movie, PageInfo } from "../constants/types";
 import { options } from "../constants/api";
 import MovieCard from "../_components/MovieCard";
 import { useEffect, useState } from "react";
-import {
-  useParams,
-  useSearchParams,
-} from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import { PaginationComp } from "../_components/Pagination";
 
-export default function Page() {  
+export default function Page() {
   const params = useParams();
   const searchParams = useSearchParams();
   const page = searchParams.get("page");
@@ -26,23 +23,24 @@ export default function Page() {
       );
       const resJson = await response.json();
       setMovies(resJson.results);
-      setPageInfo({totalPage: resJson.total_pages, currentPage: Number(page)});
+      setPageInfo({
+        totalPage: resJson.total_pages,
+        currentPage: Number(page),
+      });
     }
     fetchMovies();
   }, [params.category, page]);
   return (
-    <div className="p-5 flex flex-col gap-5 sm:px-[40px] md:px-[60px] lg:px-[80px]">
+    <div className=" flex flex-col gap-5">
       <h1 className="text-2xl font-bold capitalize ">{params.category}</h1>
-      <div className="gap-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-5">
+      <div className="gap-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
         {movies?.map((movie) => (
-          <span key={'movie'+movie.id}>
+          <span key={"movie" + movie.id}>
             <MovieCard movie={movie} />
           </span>
         ))}
       </div>
-      <div className="">
-        <PaginationComp pageInfo={pageInfo} />
-      </div>
+      {pageInfo.totalPage > 1 && <PaginationComp pageInfo={pageInfo} />}
     </div>
   );
 }

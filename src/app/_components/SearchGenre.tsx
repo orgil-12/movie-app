@@ -24,15 +24,18 @@ export const SearchGenre = () => {
     fetchGenres();
   }, [genres]);
   return (
-    <div className="flex flex-col gap-5 sm:px-[40px] md:px-[60px] lg:px-[80px]">
+    <div className="flex flex-col gap-5 md:flex-wrap xl:w-[387px]">
       <div className="flex flex-col gap-1">
-        <h1 className="text-xl font-semibold">Search by genre</h1>
+        <h1 className="text-xl font-semibold">Genres</h1>
         <h3 className="">Select a genre to see movies</h3>
       </div>
       <div className="flex flex-wrap gap-4">
         {genres?.map((genre) =>
           genreName === genre.name ? (
-            <Badge className={`rounded-full flex gap-2 justify-between pr-1`} key={genre?.id}>
+            <Badge
+              className={`rounded-full flex gap-2 justify-between pr-1`}
+              key={genre?.id}
+            >
               {genre?.name}
               <Link href="/">
                 <X size={14} />
@@ -40,7 +43,7 @@ export const SearchGenre = () => {
             </Badge>
           ) : (
             <Link
-              href={`/search?with_genres=${genre?.id}&genre_name=${genre?.name}&page=1`}
+              href={`/discover?with_genres=${genre?.id}&genre_name=${genre?.name}&page=1`}
               key={genre?.id}
             >
               <Badge

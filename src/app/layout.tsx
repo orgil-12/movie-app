@@ -40,7 +40,9 @@ export default function RootLayout({
       >
         <Navigation theme={theme} toggleTheme={toggleTheme} />
         <div className="flex flex-col gap-8">
-          <main className="min-h-screen">{children}</main>
+          <main className="min-h-screen px-5 py-8 sm:px-[40px] md:px-[60px] lg:px-[80px]">
+            {children}
+          </main>
           <Footer />
         </div>
       </body>

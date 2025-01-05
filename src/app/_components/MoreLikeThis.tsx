@@ -7,8 +7,10 @@ import { useEffect, useState } from "react";
 
 export default function MoreLikeThis({
   movieDetails,
+  slice,
 }: {
   movieDetails?: Movie;
+  slice: number;
 }) {
   const [recData, setRecData] = useState<Movie[]>();
 
@@ -27,7 +29,7 @@ export default function MoreLikeThis({
     fetchDiscoverByGenre();
   }, [movieDetails]);
   return (
-    <div id="moreLikethis" className="flex flex-col gap-8 px-5">
+    <div id="moreLikethis" className="flex flex-col gap-8 ">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-semibold ">More like this</h1>
         <Link
@@ -39,8 +41,8 @@ export default function MoreLikeThis({
       </div>
       <div>
         <div className="flex overflow-hidden gap-5">
-          {recData?.slice(0, 2).map((movie) => (
-            <Link href={`/movie/${movie.id}`} key={"recData"+movie.id}>
+          {recData?.slice(0, slice).map((movie) => (
+            <Link href={`/movie/${movie.id}`} key={"recData" + movie.id}>
               <div className={`bg-bgColor rounded-lg`}>
                 <img
                   src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}

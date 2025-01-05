@@ -8,23 +8,24 @@ import MovieCard from "../_components/MovieCard";
 import { SearchGenre } from "../_components/SearchGenre";
 
 export default function Page() {
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const [genreMovies, setGenreMovies] = useState<Movie[]>([]);
   const [pageInfo, setPageInfo] = useState<PageInfo>({
     totalPage: 0,
     currentPage: 0,
   });
   const [totalResults, setTotalResults] = useState<number>(0);
   const searchParams = useSearchParams();
-  const query = searchParams.get("query");
+  const genreId = searchParams.get("with_genres");
   const page = searchParams.get("page");
+  const genreName = searchParams.get("genre_name");
   useEffect(() => {
     async function fetchGenreMovies() {
       const response = await fetch(
-        `https://api.themoviedb.org/3/search/movie?query=${query}&page=${page}`,
+        `https://api.themoviedb.org/3/discover/movie?with_genres=${genreId}&page=${page}`,
         options
       );
       const resJson = await response.json();
-      setMovies(resJson.results);
+      setGenreMovies(resJson.results);
       setPageInfo({
         totalPage: resJson.total_pages,
         currentPage: resJson.page,
@@ -32,26 +33,24 @@ export default function Page() {
       setTotalResults(resJson.total_results);
     }
     fetchGenreMovies();
-  }, [query, page]);
-  if (!movies) {
-    return <div>Loading...</div>;
-  }
+  }, [genreId, page]);
   return (
     <div className="flex flex-col pt-8 gap-8 xl:grid xl:grid-cols-[auto,auto,auto] ">
-      <h1 className="font-semibold text-2xl xl:col-span-3 ">Search results</h1>
-      <div className="flex flex-col gap-5 xl:col-span-2 xl:border-r xl:pr-8  ">
+      <h1 className="font-semibold text-2xl xl:col-span-3 ">Search filter</h1>
+      <SearchGenre />
+      <div className="flex flex-col gap-5 xl:col-span-2 xl:border-l xl:pl-8  ">
         <h1 className="text-xl font-bold  ">
-          {totalResults} results for "{query}"
+          {totalResults} titles in "{genreName}"
         </h1>
         <div className="gap-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 ">
-          {movies?.map((movie) => (
+          {genreMovies?.map((movie) => (
             <span key={"movie" + movie.id}>
               <MovieCard movie={movie} />
             </span>
           ))}
         </div>
+        {pageInfo.totalPage > 1 && <PaginationComp pageInfo={pageInfo} />}
       </div>
-      <SearchGenre />
     </div>
   );
 }

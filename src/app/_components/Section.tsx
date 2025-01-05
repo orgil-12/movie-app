@@ -17,7 +17,7 @@ export default async function Section({ title, endpoint }: Props) {
   const resJson = await res.json();
   const movies: Movie[] = resJson.results.slice(0, 10);
   return (
-    <div className="p-5 flex flex-col gap-5 sm:px-[40px] md:px-[60px] lg:px-[80px]">
+    <div className="flex flex-col gap-5">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold ">{title}</h1>
         <Link
