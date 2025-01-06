@@ -34,7 +34,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className="2xl:w-[1536px] mx-auto bg-gray-100">
+    <html lang="en" className={`2xl:w-[1536px] mx-auto bg-muted ${theme}`}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased ${theme}`}
       >

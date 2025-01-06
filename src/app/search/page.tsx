@@ -50,6 +50,7 @@ export default function Page() {
             </span>
           ))}
         </div>
+      {pageInfo.totalPage > 1 && <PaginationComp pageInfo={pageInfo} />}
       </div>
       <SearchGenre />
     </div>

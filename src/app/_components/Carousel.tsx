@@ -10,7 +10,7 @@ import {
 import { useRef } from "react";
 
 export const CarouselComp = () => {
-  const plugin = useRef(Autoplay({ delay: 1000, stopOnInteraction: true }));
+  const plugin = useRef(Autoplay({ delay: 4000, stopOnInteraction: true }));
   const photos = ["wicked.png", "gladiator.png", "Moana.png"];
   return (
     <Carousel
@@ -32,8 +32,10 @@ export const CarouselComp = () => {
           </CarouselItem>
         ))}
       </CarouselContent>
+      <div className="hidden md:block">
       <CarouselPrevious />
       <CarouselNext />
+      </div>
     </Carousel>
   );
 };

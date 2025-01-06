@@ -1,3 +1,5 @@
+"use client"
+
 import { Film, SearchIcon, X } from "lucide-react";
 import { Search } from "@/app/_components/Search";
 import { Moon } from "@/app/_components/Moon";
