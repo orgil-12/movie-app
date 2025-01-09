@@ -10,6 +10,8 @@ export default {
   theme: {
   	extend: {
   		colors: {
+
+			'custom-gray': 'rgba(9, 9, 11, 0.686)',
   			background: 'hsl(var(--background))',
 			bgColor: 'hsl(var(--bgColor))',
 			starColor: 'hsl(var(--starColor))',
@@ -61,5 +63,7 @@ export default {
 		
   	}
   },
+  
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;
+

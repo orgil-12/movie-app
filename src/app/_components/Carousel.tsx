@@ -23,10 +23,10 @@ export const CarouselComp = () => {
         {photos.map((photo, index) => (
           <CarouselItem
             key={index}
-            className=" w-full xl:h-[700px] bg-cover bg-center items-center justify-center"
+            className=" w-full bg-cover bg-center items-center justify-center"
           >
             <div
-              className="bg-cover bg-center w-[100%] h-[700px]"
+              className="bg-cover bg-center w-[100%] h-screen"
               style={{ backgroundImage: `url('/${photo}')` }}
             ></div>
           </CarouselItem>

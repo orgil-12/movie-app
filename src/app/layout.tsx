@@ -34,7 +34,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={` bg-muted ${theme}`}>
+    <html lang="en" className={` bg-muted ${theme} `}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased ${theme}`}
       >
