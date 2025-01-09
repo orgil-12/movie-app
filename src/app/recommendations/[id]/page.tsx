@@ -33,7 +33,7 @@ export default function Page() {
   }, [page]);
   return (
     <div>
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-5 px-5 py-8 sm:px-[40px] md:px-[60px] lg:px-[80px]">
         <h1 className="text-2xl font-semibold ">More like this</h1>
         <div className="gap-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
           {recData?.map((movie) => (

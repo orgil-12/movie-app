@@ -27,8 +27,8 @@ export const Navigation = ({
   };
 
   return (
-    <div>
-      <div className="w-[100%] flex justify-between px-5 py-[11.5px] sm:hidden">
+    <div className="py-2">
+      <div className="w-[100%] flex  justify-between px-5 py-[11.5px] sm:hidden">
         {isSearching ? (
           <div className="w-[100%] flex justify-between items-center">
             <div className="flex gap-3 items-center relative">

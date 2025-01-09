@@ -32,9 +32,9 @@ export const CarouselComp = () => {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <div className="hidden md:block">
-      <CarouselPrevious />
-      <CarouselNext />
+      <div className="hidden">
+        <CarouselPrevious />
+        <CarouselNext />
       </div>
     </Carousel>
   );

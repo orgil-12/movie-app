@@ -34,13 +34,13 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={`2xl:w-[1536px] mx-auto bg-muted ${theme}`}>
+    <html lang="en" className={` bg-muted ${theme}`}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased ${theme}`}
       >
         <Navigation theme={theme} toggleTheme={toggleTheme} />
         <div className="flex flex-col gap-8">
-          <main className="min-h-screen px-5 py-8 sm:px-[40px] md:px-[60px] lg:px-[80px]">
+          <main className="min-h-screen">
             {children}
           </main>
           <Footer />

@@ -40,7 +40,7 @@ export default function Page() {
   }
   return (
 <Suspense fallback={<Loading />}>
-<div className="flex flex-col pt-8 gap-8 xl:grid xl:grid-cols-[auto,auto,auto] ">
+<div className="flex flex-col pt-8 gap-8 xl:grid xl:grid-cols-[auto,auto,auto] px-5 py-8 sm:px-[40px] md:px-[60px] lg:px-[80px] ">
       <h1 className="font-semibold text-2xl xl:col-span-3 ">Search results</h1>
       <div className="flex flex-col gap-5 xl:col-span-2 xl:border-r xl:pr-8  ">
         <h1 className="text-xl font-bold  ">

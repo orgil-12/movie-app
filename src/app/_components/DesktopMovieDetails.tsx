@@ -19,7 +19,7 @@ export const DesktopDetail = ({
   min,
 }: Details) => {
   return (
-    <div className="xl:px-[60px] py-8 grid gap-4">
+    <div className="xl:px-[60px] grid gap-4 ">
       <div className="flex flex-col gap-6 ">
         <div className="pr-4 flex w-full justify-between gap-10">
           <div>
@@ -48,7 +48,7 @@ export const DesktopDetail = ({
           alt={movieDetails?.title}
         />
       </div>
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-5 px-5 py-8 sm:px-[40px] md:px-[60px] lg:px-[80px]">
         <div className="flex flex-wrap gap-3">
           {movieDetails?.genres?.map((genre) => (
             <Badge
@@ -62,7 +62,7 @@ export const DesktopDetail = ({
         </div>
         <div className="">{movieDetails?.overview}</div>
       </div>
-      <div className="flex flex-col gap-5 mt-5">
+      <div className="flex flex-col gap-5 mt-5 px-5 py-8 sm:px-[40px] md:px-[60px] lg:px-[80px]">
         <div className="flex gap-[53px] items-center border-b pb-5">
           <h4 className="font-semibold">Director</h4>
           <div className="flex flex-wrap gap-1">

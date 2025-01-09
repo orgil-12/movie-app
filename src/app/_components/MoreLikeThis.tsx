@@ -29,7 +29,7 @@ export default function MoreLikeThis({
     fetchDiscoverByGenre();
   }, [movieDetails]);
   return (
-    <div id="moreLikethis" className="flex flex-col gap-8 ">
+    <div id="moreLikethis" className="flex flex-col gap-8 px-5 py-8 sm:px-[40px] md:px-[60px] lg:px-[80px] ">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-semibold ">More like this</h1>
         <Link

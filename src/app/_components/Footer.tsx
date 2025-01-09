@@ -1,15 +1,18 @@
 import { Film } from "lucide-react";
 import { Mail } from "lucide-react";
 import { Phone } from "lucide-react";
+import Link from "next/link";
 
 export const Footer = () => {
   return (
     <div className="w-[100%] bg-[#4338CA] py-10 px-7 text-white grid grid-cols-1 sm:grid-cols-[auto,auto] gap-7 sm:justify-between sm:px-[40px]">
       <div className="flex flex-col gap-3" id="title">
-        <p className="flex gap-2 italic font-bold text-[16px]">
-          <Film />
-          <span>Movie Z</span>
-        </p>
+        <Link href={"/"}>
+          <p className="flex gap-2 italic font-bold text-[16px]">
+            <Film />
+            <span>Movie Z</span>
+          </p>
+        </Link>
         <p className="text-sm">© 2024 Movie Z. All Rights Reserved.</p>
       </div>
       <div className="flex gap-12">
