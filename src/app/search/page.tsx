@@ -6,8 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { PaginationComp } from "../_components/Pagination";
 import MovieCard from "../_components/MovieCard";
 import { SearchGenre } from "../_components/SearchGenre";
-
-const Loading = () => (<div>Loading</div>);
+import Loading from "./loading";
 
 export default function Page() {
   const [movies, setMovies] = useState<Movie[]>([]);
