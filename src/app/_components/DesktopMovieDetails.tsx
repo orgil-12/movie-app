@@ -19,7 +19,7 @@ export const DesktopDetail = ({
   min,
 }: Details) => {
   return (
-    <div className="xl:px-[60px] grid gap-4 ">
+    <div className="xl:px-[60px] grid gap-4 mt-[80px]">
       <div className="flex flex-col gap-6 ">
         <div className="pr-4 flex w-full justify-between gap-10">
           <div>

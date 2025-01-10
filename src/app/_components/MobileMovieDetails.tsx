@@ -19,7 +19,7 @@ export const MobileDetail = ({
   min,
 }: Details) => {
   return (
-    <div className="pt-8 flex flex-col gap-8">
+    <div className="pt-8 flex flex-col gap-8 mt-[50px]">
       <div className="flex flex-col gap-8 ">
         <div className="flex flex-col gap-4">
           <div className="px-5 flex gap-10">

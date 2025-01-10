@@ -40,10 +40,11 @@ export default function Page() {
     }
     fetchCredits();
   }, [params?.id]);
+  console.log(movieDetails)
 
   return (
     <div>
-      <div className="sm:hidden">
+      <div className="sm:hidden ">
         {movieDetails && movieCredits && (
           <MobileDetail
             movieDetails={movieDetails}
@@ -54,7 +55,7 @@ export default function Page() {
           />
         )}
       </div>
-      <div className="hidden sm:block">
+      <div className="hidden sm:block" >
         {movieDetails && movieCredits && (
           <DesktopDetail
             movieDetails={movieDetails}
