@@ -35,17 +35,17 @@ export default function RootLayout({
 
   return (
     <html lang="en" className={` bg-muted ${theme} `}>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased ${theme}`}
-      >
-        <Navigation theme={theme} toggleTheme={toggleTheme} />
-        <div className="flex flex-col gap-8">
-          <main className="min-h-screen">
-            <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
-          </main>
-          <Footer />
-        </div>
-      </body>
+      <Suspense fallback={<div>Loading...</div>}>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased ${theme}`}
+        >
+          <Navigation theme={theme} toggleTheme={toggleTheme} />
+          <div className="flex flex-col gap-8">
+            <main className="min-h-screen">{children}</main>
+            <Footer />
+          </div>
+        </body>
+      </Suspense>
     </html>
   );
 }
