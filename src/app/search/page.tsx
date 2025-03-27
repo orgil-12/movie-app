@@ -1,5 +1,5 @@
 "use client";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Movie, PageInfo } from "../constants/types";
 import { options } from "../constants/api";
 import { useSearchParams } from "next/navigation";
@@ -36,29 +36,28 @@ export default function Page() {
     fetchGenreMovies();
   }, [query, page]);
 
-  if (!movies.length) { // Changes from `!movies` to `!movies.length`
+  if (!movies.length) {
+    // Changes from `!movies` to `!movies.length`
     return <Loading />;
   }
 
   return (
-    <Suspense fallback={<Loading />}>
-      <div className="flex flex-col pt-8 gap-8 xl:grid xl:grid-cols-[auto,auto,auto] px-5 py-8 sm:px-[40px] md:px-[60px] lg:px-[80px] mt-14">
-        <h1 className="font-semibold text-2xl xl:col-span-3 ">Search results</h1>
-        <div className="flex flex-col gap-5 xl:col-span-2 xl:border-r xl:pr-8">
-          <h1 className="text-xl font-bold">
-            {totalResults} results for "{query}"
-          </h1>
-          <div className="gap-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
-            {movies.map((movie) => (
-              <span key={"movie" + movie.id}>
-                <MovieCard movie={movie} />
-              </span>
-            ))}
-          </div>
-          {pageInfo.totalPage > 1 && <PaginationComp pageInfo={pageInfo} />}
+    <div className="flex flex-col pt-8 gap-8 xl:grid xl:grid-cols-[auto,auto,auto] px-5 py-8 sm:px-[40px] md:px-[60px] lg:px-[80px] mt-14">
+      <h1 className="font-semibold text-2xl xl:col-span-3 ">Search results</h1>
+      <div className="flex flex-col gap-5 xl:col-span-2 xl:border-r xl:pr-8">
+        <h1 className="text-xl font-bold">
+          {totalResults} results for "{query}"
+        </h1>
+        <div className="gap-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
+          {movies.map((movie) => (
+            <span key={"movie" + movie.id}>
+              <MovieCard movie={movie} />
+            </span>
+          ))}
         </div>
-        <SearchGenre />
+        {pageInfo.totalPage > 1 && <PaginationComp pageInfo={pageInfo} />}
       </div>
-    </Suspense>
+      <SearchGenre />
+    </div>
   );
 }

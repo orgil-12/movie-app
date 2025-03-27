@@ -1,12 +1,11 @@
 "use client";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Movie, PageInfo } from "../constants/types";
 import { options } from "../constants/api";
 import { useSearchParams } from "next/navigation";
 import { PaginationComp } from "../_components/Pagination";
 import MovieCard from "../_components/MovieCard";
 import { SearchGenre } from "../_components/SearchGenre";
-import { Loading } from "../search/page";
 
 export default function Page() {
   const [genreMovies, setGenreMovies] = useState<Movie[]>([]);
@@ -36,7 +35,6 @@ export default function Page() {
     fetchGenreMovies();
   }, [genreId, page]);
   return (
-  <Suspense fallback={<Loading />}>
       <div className="mt-14 flex flex-col pt-8 gap-8 xl:grid xl:grid-cols-[auto,auto,auto] px-5 py-8 sm:px-[40px] md:px-[60px] lg:px-[80px] ">
       <h1 className="font-semibold text-2xl xl:col-span-3 ">Search filter</h1>
       <SearchGenre />
@@ -54,6 +52,5 @@ export default function Page() {
         {pageInfo.totalPage > 1 && <PaginationComp pageInfo={pageInfo} />}
       </div>
     </div>
-  </Suspense>
   );
 }

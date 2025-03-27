@@ -4,7 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Footer } from "./_components/Footer";
 import { Navigation } from "./_components/Navigation";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -41,7 +41,7 @@ export default function RootLayout({
         <Navigation theme={theme} toggleTheme={toggleTheme} />
         <div className="flex flex-col gap-8">
           <main className="min-h-screen">
-            {children}
+            <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
           </main>
           <Footer />
         </div>
