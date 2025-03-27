@@ -7,16 +7,10 @@ import { MoonType } from "@/app/layout";
 import Link from "next/link";
 import { FilterGenre } from "./FilterGenre";
 import { useSearchParams } from "next/navigation";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, Suspense, useState } from "react";
 import { SearchResultList } from "./SearchResultList";
 
-export const Navigation = ({
-  toggleTheme,
-  theme,
-}: {
-  toggleTheme: () => void;
-  theme: MoonType;
-}) => {
+export const Navigation = () => {
   const searchParams = useSearchParams();
   const genreName = searchParams.get("genre_name");
   const [isSearching, setIsSearching] = useState<boolean>(false);
@@ -27,7 +21,8 @@ export const Navigation = ({
   };
 
   return (
-    <div className="w-full  fixed z-10 bg-custom-gray justify-between ">
+<Suspense fallback={<div>Loading...</div>}>
+<div className="w-full  fixed z-10 bg-custom-gray justify-between ">
       <div className="w-[100%] flex  justify-between px-5 py-[11.5px] sm:hidden">
         {isSearching ? (
           <div className="w-[100%] flex justify-between items-center">
@@ -67,14 +62,9 @@ export const Navigation = ({
                 className="border rounded-[10px] p-2"
                 onClick={() => setIsSearching(true)}
               >
-                <Search theme={theme} />
+                <Search />
               </button>
-              <button
-                className="border rounded-[10px] p-2"
-                onClick={toggleTheme}
-              >
-                <Moon theme={theme} />
-              </button>
+        
             </div>
           </div>
         )}
@@ -108,11 +98,10 @@ export const Navigation = ({
               )}
             </div>
           </div>
-          <button className="border border-white rounded-[10px] p-2" onClick={toggleTheme}>
-            <Moon theme={theme} />
-          </button>
+     
         </div>
       </div>
     </div>
+</Suspense>
   );
 };

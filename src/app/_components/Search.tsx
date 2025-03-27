@@ -1,7 +1,7 @@
 import { MoonType } from "../layout";
 
-export const Search = ({theme}:{theme: MoonType}) => {
-  const stroke = theme === "dark" ? "#fff" : "#000";
+export const Search = () => {
+  const stroke =  "#000";
   return (
     <svg
       width="16"
