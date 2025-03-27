@@ -1,3 +1,4 @@
+"use client";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -26,25 +27,27 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // const [theme, setTheme] = useState<MoonType>("light");
+  const [theme, setTheme] = useState<MoonType>("light");
 
-  // const toggleTheme = () => {
-  //   setTheme((prev) => (prev === "light" ? "dark" : "light"));
-  // };
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  };
 
   return (
-    <html lang="en" className={` bg-muted  `}>
-      {/* <Suspense fallback={<div>Loading...</div>}> */}
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased `}
-        >
-          <Navigation />
-          <div className="flex flex-col gap-8">
-            <main className="min-h-screen">{children}</main>
-            <Footer />
-          </div>
-        </body>
-      {/* </Suspense> */}
+    <html lang="en" className={` bg-muted ${theme} `}>
+      <Suspense >
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased ${theme}`}
+      >
+        <Navigation theme={theme} toggleTheme={toggleTheme} />
+        <div className="flex flex-col gap-8">
+          <main className="min-h-screen">
+            {children}
+          </main>
+          <Footer />
+        </div>
+      </body>
+      </Suspense>
     </html>
   );
 }
